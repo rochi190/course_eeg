@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.log
+.DONE
+.FAILED
+**/data/
+**/outputs/checkpoints/
+*.pt
+*.pth
+*.npy
+*.set
+*.fdt
+run_proj_a.sh
+run_proj_b.sh
+run_remote_cmds.py
+run_remote_checked.py
