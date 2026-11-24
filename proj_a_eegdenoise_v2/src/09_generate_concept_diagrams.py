@@ -244,11 +244,11 @@ def make_slide5_method_pipeline() -> None:
     box(ax, 0.032, 0.19, 0.132, 0.13, "white", NAVY, lw=1.4)
     ax.text(0.098, 0.255, "Clean EEG\nx (1024 pts)", ha="center", va="center", fontsize=9.4, fontweight="bold", color=NAVY)
 
-    # 3 Physics Operations (clean va='top' spacing, ZERO overlap)
+    # 3 Physics Operations (unified total-sample % denominator: 67.5% / 30% / 10%)
     ops = [
-        (0.62, "1. Random Lowpass (75%)", "4th-order Butterworth, fc ~ U[35, 110] Hz\nScalp attenuation; breaks >80 Hz shortcut", LIGHT_BLUE, BLUE, "#1B4F72"),
-        (0.39, "2. Local Burst Mask (30%)", "Tukey window (0.3–1.5 s active burst)\nSimulates transient jaw clenching", LIGHT_PURPLE, PURPLE, "#6C3483"),
-        (0.16, "3. Clean Identity (10%)", "Pure clean input (y = x -> x_hat = x)\nPrevents over-denoising on quiet epochs", LIGHT_GREEN, GREEN, "#1E8449"),
+        (0.62, "1. Random Lowpass (67.5% total)", "75% of noisy | 4th-ord filtfilt, fc~U[35,110] Hz\nScalp attenuation; breaks >80 Hz shortcut", LIGHT_BLUE, BLUE, "#1B4F72"),
+        (0.39, "2. Local Burst Mask (30% total)", "Tukey window (0.3–1.5 s active burst)\nSimulates transient jaw clenching", LIGHT_PURPLE, PURPLE, "#6C3483"),
+        (0.16, "3. Clean Identity (10% total)", "Pure clean input (y = x -> x_hat = x)\nPrevents over-denoising on quiet epochs", LIGHT_GREEN, GREEN, "#1E8449"),
     ]
     for y0, title, desc, fc, ec, tc in ops:
         box(ax, 0.205, y0, 0.228, 0.165, fc, ec, lw=1.4)

@@ -44,7 +44,7 @@ tr_eval = _load_local("v1_train_eval", V1_SRC / "04_train_eval.py")
 V1_PROC = V1_ROOT / "data" / "processed"
 V1_CKPT = V1_ROOT / "outputs" / "checkpoints"
 V2_CKPT = V2_ROOT / "outputs" / "checkpoints"
-ASSET_DIR = REPO_ROOT / "ppt_assets_proj_a"
+ASSET_DIR = REPO_ROOT / "ppt_assets_proj_a" / "figures"
 
 # Consistent publication-grade palette matching ppt_eeg.md
 COLORS = {
@@ -639,9 +639,9 @@ def fig05_v2_crossfilter_waveforms(
             ],
         ),
         (
-            "Unseen Filter 2: 1st-Order RC Lowpass (fc = 40 Hz, -20 dB/dec) [-5 dB]",
+            "Unseen Filter 2: Zero-Phase 1st-Order RC (fc = 40 Hz, -40 dB/dec) [-5 dB]",
             [
-                ("Noisy Input (RC 1st-Order EMG)", yr_arr[idx], xr_arr[idx], COLORS["noisy"], True),
+                ("Noisy Input (RC 1st-Order filtfilt EMG)", yr_arr[idx], xr_arr[idx], COLORS["noisy"], True),
                 ("Exp A2: 1D-ResUNet (ID)", pr_a2[idx], xr_arr[idx], COLORS["a2"], False),
                 ("Exp A3-noLP (Burst+Clean, No LP)", pr_nolp[idx], xr_arr[idx], COLORS["a3_nolp"], False),
                 ("Exp A3: Physics-ResUNet (Ours)", pr_a3[idx], xr_arr[idx], COLORS["a3"], False),
@@ -684,7 +684,7 @@ def fig05_v2_crossfilter_waveforms(
 
     fig.suptitle(
         "[V2 Cross-Filter Stress Test] Generalization to Non-Butterworth Attenuation Curves (Same EEG Epoch)\n"
-        "(Trained Only on 4th-Order Butterworth Randomization -> Cleanly Transfers to ExpDecay & 1st-Order RC)",
+        "(Trained Only on Zero-Phase 4th-Order Butterworth -> Transfers to ExpDecay & Zero-Phase 1st-Order RC)",
         fontweight="bold", y=1.01,
     )
     fig.tight_layout()

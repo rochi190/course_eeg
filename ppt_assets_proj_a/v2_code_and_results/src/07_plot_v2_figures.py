@@ -35,10 +35,10 @@ def plot_fig4_ablation(df_ab: pd.DataFrame) -> None:
     ov = df_ab[df_ab["snr_db"] == "Overall"].copy()
     tracks = ["Test-Pure-LP45", "Test-Pure-Burst", "Test-ExpDecay", "Test-RC1st"]
     track_labels = [
-        "Pure LP45\n(Butterworth 4th)",
+        "Pure LP45\n(Butterworth 4th, filtfilt)",
         "Pure Burst\n(0.3-1.5s Unfiltered)",
         "ExpDecay\n(exp(-0.015f))",
-        "RC 1st-Order\n(fc=40 Hz, -20dB/dec)",
+        "RC 1st-Order (filtfilt)\n(fc=40 Hz, -40 dB/dec)",
     ]
     exps = [
         ("Exp A1", "#d62728", "Exp A1: 1D-ResCNN (ID)"),
